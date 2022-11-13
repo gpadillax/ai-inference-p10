@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inference
+  namespace: inferencep
+spec:
+  selector:
+    matchLabels:
+      app: inference
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: inference
+    spec:
+      containers:
+        - name: inference
+          image: quay.io/ntlawrence/inference:latest
+          ports:
+            - containerPort: 5000
+      nodeSelector:
+        ai.inference.accelerator: mma
+

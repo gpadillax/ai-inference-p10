@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: inference
+  namespace: inferencep
+spec:
+  selector:
+    app: inference
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+

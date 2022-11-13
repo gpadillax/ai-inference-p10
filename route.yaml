@@ -1,0 +1,13 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: inference
+  namespace: inferencep
+spec:
+  path: /
+  to:
+    kind: Service
+    name: inference
+  port:
+    targetPort: 5000
+
